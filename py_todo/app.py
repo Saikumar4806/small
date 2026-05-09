@@ -47,8 +47,11 @@ def register():
                          (request.form['user'], generate_password_hash(request.form['pass'])))
             conn.commit()
             return redirect(url_for('login'))
-        except: flash('User exists')
-        finally: conn.close()
+        except:
+            # This triggers the message in the HTML above
+            flash('User already exists!') 
+        finally:
+            conn.close()
     return render_template('register.html')
 
 @app.route('/add', methods=['POST'])

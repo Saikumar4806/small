@@ -13,6 +13,13 @@
 <body>
     <div class="card">
         <h1>Register</h1>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <p style="color:red; font-size:0.9rem; margin-bottom:15px;">{{ messages[0] }}</p>
+          {% endif %}
+        {% endwith %}
+
         <form method="POST">
             <input type="text" name="user" placeholder="Choose Username" required>
             <input type="password" name="pass" placeholder="Choose Password" required>
